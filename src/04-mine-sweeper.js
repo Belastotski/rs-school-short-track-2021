@@ -21,8 +21,20 @@
  *  [1, 1, 1]
  * ]
  */
-function minesweeper(/* matrix */) {
-  throw new Error('Not implemented');
+function minesweeper(matrix) {
+  const count = (line, col) => {
+    const sq = [];
+    // eslint-disable-next-line max-len
+    for (let i = -1; i < 2; i++) {
+      for (let j = -1; j < 2; j++) {
+        if (matrix[line + i] !== undefined
+          && matrix[line + i][col + j] !== undefined
+          && (i || j)) sq.push(matrix[line + i][col + j]);
+      }
+    }
+    return sq.filter((v) => v).length;
+  };
+  return matrix.map((x, line) => x.map((y, col) => count(line, col)));
 }
 
 module.exports = minesweeper;

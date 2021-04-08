@@ -9,8 +9,12 @@
  * For n = 152, the output should be 52
  *
  */
-function deleteDigit(/* n */) {
-  throw new Error('Not implemented');
+function deleteDigit(n) {
+  return [...`${n}`].map((_, i, arr) => {
+    const temp = [...arr];
+    temp.splice(i, 1);
+    return +temp.join('');
+  }).sort((a, b) => b - a)[0];
 }
 
 module.exports = deleteDigit;

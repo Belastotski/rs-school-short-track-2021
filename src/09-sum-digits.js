@@ -10,8 +10,11 @@
  * For 91, the result should be 1 (9 + 1 = 10, 1 + 0 = 1)
  *
  */
-function getSumOfDigits(/* n */) {
-  throw new Error('Not implemented');
+function getSumOfDigits(n) {
+  let num = n;
+  // eslint-disable-next-line no-bitwise
+  while (num / 10 | 0) num = [...`${num}`].reduce((sum, v) => Number(sum) + Number(v));
+  return num;
 }
 
 module.exports = getSumOfDigits;
